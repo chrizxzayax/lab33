@@ -67,5 +67,20 @@ int main(int argc, char** argv){
 
     cout << "Simulation seed: " << seed << " num_lanes=" << num_lanes << " periods=" << total_p << " seed=" << seed << "\n\n";
 
-
+    vector<Lane> lanes(num_lanes);// create vector of lanes
+    for (int i = 0; i < num_lanes; ++i) {
+        for (int j = 0; j < INITIAL_PER_LANE; ++j) {
+            lanes[i].emplace_back();// add Car to lane
+        }
+    }
+    // print initial lane queues
+    cout << "Initial lane queues:\n";
+    for (int i = 0; i < num_lanes; ++i) {
+        cout << "Lane " << (i+1) << ":\n";
+        for (const auto &c : lanes[i]) {
+            cout << "    ";
+            c.print();// print car
+            cout << "\n";
+        }
+    }
 }
